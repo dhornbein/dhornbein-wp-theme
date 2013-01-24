@@ -12,7 +12,15 @@
  * @since dhornbein 1.0
  */
 if ( ! isset( $content_width ) )
-	$content_width = 640; /* pixels */
+	$content_width = 1400; /* pixels */
+
+/**
+ * enable post thumbnails
+ *
+ * @since dhornbein 1.0
+ */
+
+add_theme_support( 'post-thumbnails' ); 
 
 if ( ! function_exists( 'dhornbein_setup' ) ) :
 /**
@@ -98,6 +106,7 @@ add_action( 'widgets_init', 'dhornbein_widgets_init' );
 function dhornbein_scripts() {
 	wp_enqueue_style( 'normalize', get_template_directory_uri() . '/css/framework/foundation.css' );
 	wp_enqueue_style( 'foundation', get_template_directory_uri() . '/css/framework/foundation.css', 'normalize' );
+	wp_enqueue_style( 'icons', get_template_directory_uri() . '/css/font-awesome.css', 'foundation' );
 	wp_enqueue_style( 'style', get_stylesheet_uri(), 'foundation' );
 
 	wp_enqueue_script( 'small-menu', get_template_directory_uri() . '/js/small-menu.js', array( 'jquery' ), '20120206', true );

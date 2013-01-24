@@ -6,6 +6,9 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	
+	<?php get_template_part( 'post', 'stage' ); ?>
+	
 	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 
