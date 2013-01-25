@@ -329,15 +329,21 @@ Base
 Articles
 /////////////////////////////////////////////////*/
 
-article.post {
-	background-color: white;
-	box-shadow: 1px 1px 5px rgba(0,0,0,.2);
-	padding: 1.5em;
-}
-article.post,
 .post .entry-stage,
 .post .entry-stage img {
 	border-radius: 10px 10px 0 0;
+}
+
+.post footer.entry-meta {
+	border-radius: 0 0 10px 10px;
+}
+
+article.post {
+	background-color: white;
+	box-shadow: 1px 1px 5px rgba(0,0,0,.2);
+	border-radius: 10px;
+	padding: 1.5em;
+	position: relative;
 }
 
 .post .entry-stage {
@@ -355,9 +361,10 @@ article.post,
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	height: 13px;
+	height: 20px;
 
 	background: transparent url('img/media_shadow.png') scroll no-repeat center bottom;
+	background-size: contain;
 }
 
 .post .entry-stage img { display: block; margin: 0 auto; }
@@ -373,12 +380,35 @@ article.post,
 	padding: .5em;
 }
 
+.post footer.entry-meta {
+	background-color: #FAFAFA;
+	border-top: 1px solid #D1D0CC;
+	margin: 0 -1.5em -1.5em;
+	overflow: hidden;
+	position: relative;
+}
 
+.post .edit-link {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+}
+
+.post .edit-link a {
+	color: inherit;
+}
 
 
 /*/////////////////////////////////////////////////
 State
 /////////////////////////////////////////////////*/
+
+.entry-header,
+.entry-content,
+.entry-summary {
+	max-width: 800px;
+	margin: 0 auto;
+}
 
 /*/////////////////////////////////////////////////
 Print

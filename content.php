@@ -59,6 +59,6 @@
 		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'dhornbein' ), __( '1 Comment', 'dhornbein' ), __( '% Comments', 'dhornbein' ) ); ?></span>
 		<?php endif; ?>
 
-		<?php edit_post_link( __( 'Edit', 'dhornbein' ), '<span class="sep"> | </span><span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-meta -->
+	<?php edit_post_link( __( 'Edit', 'dhornbein' ), '<span class="edit-link btn tiny radius secondary">', '</span>' ); ?>
 </article><!-- #post-<?php the_ID(); ?> -->
