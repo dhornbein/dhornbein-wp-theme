@@ -31,34 +31,58 @@
 	<?php endif; ?>
 
 	<footer class="entry-meta">
-		<?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search ?>
-			<?php
-				/* translators: used between list items, there is a space after the comma */
-				$categories_list = get_the_category_list( __( ', ', 'dhornbein' ) );
-				if ( $categories_list && dhornbein_categorized_blog() ) :
-			?>
-			<span class="cat-links">
-				<?php printf( __( 'Posted in %1$s', 'dhornbein' ), $categories_list ); ?>
-			</span>
-			<?php endif; // End if categories ?>
+		
+		<?php if ( comments_open() ):  ?>
+		<a class="comment-box meta-box mobile-third four columns" href="<?php comments_link(); ?>">
+				<div class="meta-box-title"><h5>Comments</h5></div>
+				<div class="meta-box-icon">
+					<i class="<?php comments_number( 'icon-comment-alt', 'icon-comment', 'icon-comments-alt' ); ?> icon-4x"></i> 
+					<i class="icon-plus icon-2x"></i> 
+					<span class="meta-box-counter"><?php comments_number('0','1','%') ?></span>
+				</div>
+		</a>
+		<?php else : ?>
+		<div class="comment-box meta-box mobile-third four columns">
+				<div class="meta-box-title"><h5>Comments Closed</h5></div>
+				<div class="meta-box-icon">
+					<i class="icon-comment-alt icon-4x"></i> 
+					<i class="icon-ban-circle icon-2x"></i>
+				</div>
+		</div>
+		<?php endif; #! comments_open()  ?>
 
-			<?php
-				/* translators: used between list items, there is a space after the comma */
-				$tags_list = get_the_tag_list( '', __( ', ', 'dhornbein' ) );
-				if ( $tags_list ) :
-			?>
-			<span class="sep"> | </span>
-			<span class="tags-links">
-				<?php printf( __( 'Tagged %1$s', 'dhornbein' ), $tags_list ); ?>
-			</span>
-			<?php endif; // End if $tags_list ?>
-		<?php endif; // End if 'post' == get_post_type() ?>
+		<div class="general-box meta-box mobile-third four columns">
+			<div class="meta-box-title row collapse">
+				<h5>
+					<div class="left">
+						<i class="icon-calendar"></i> <span><span class="hide-for-medium-down"><?php echo get_the_date('l M d, Y ') ?></span><span class="show-for-medium-down"><?php echo get_the_date('D n/j/y ') ?></span> &nbsp;</span>
+					</div>
+					<div>
+						<i class="icon-time"></i> <span><?php echo get_the_time('G:i'); ?><span class="hide-for-medium-down"><?php echo get_the_time(':s'); ?></span> EST</span>
+					</div>
+				</h5>
+			</div>
+			<ul class="meta-box-list">
+				<?php
+					/* translators: used between list items, there is a space after the comma */
+					$categories_list = '<span class="label secondary radius">' . get_the_category_list( __( '</span> <span class="label secondary radius">', 'dhornbein' ) ) . '</span>';
+					if ( $categories_list && dhornbein_categorized_blog() ) :
+				?>
+				<li>
+					<span class="meta-box-item-label"><i class="icon-folder-close-alt"></i> <span class="hide-for-small"> <?php printf( __( '<span class="hide-for-small">Category:</span></span> %1$s', 'dhornbein' ), $categories_list ); ?>
+				</li>
+				<?php endif; // End if categories ?>
+			</ul>
+		</div>
 
-		<?php if ( ! post_password_required() && ( comments_open() || '0' != get_comments_number() ) ) : ?>
-		<span class="sep"> | </span>
-		<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'dhornbein' ), __( '1 Comment', 'dhornbein' ), __( '% Comments', 'dhornbein' ) ); ?></span>
-		<?php endif; ?>
+
+		<div class="tag-box meta-box mobile-third four columns">
+			<div class="meta-box-title"><h5>Tags</h5></div>
+			<ul class="meta-box-list">
+				<?php the_tags( '<li class="label radius">','</li> <li class="label radius">','</li>' ); ?>
+			</ul>
+		</div>
 
 	</footer><!-- .entry-meta -->
-	<?php edit_post_link( __( 'Edit', 'dhornbein' ), '<span class="edit-link btn tiny radius secondary">', '</span>' ); ?>
+	<?php edit_post_link( __( 'Edit', 'dhornbein' ), '<span class="edit-link btn tiny radius secondary"><i class="icon-wrench"></i> ', '</span>' ); ?>
 </article><!-- #post-<?php the_ID(); ?> -->
